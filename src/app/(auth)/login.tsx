@@ -1,13 +1,14 @@
 import { router } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 import LogInForm from '@/components/LogInForm'
 import { PrimaryButton } from '@/components/ui/PrimaryButton'
 import { useActions } from '@/hooks/useActions'
 import { useLoginUserMutation } from '@/services/AuthService'
 import { ILogInData } from '@/types/models'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function LoginScreen() {
 	const { logIn, logOut } = useActions()
@@ -38,8 +39,14 @@ export default function LoginScreen() {
 	}
 
 	return (
-		<View style={styles.container}>
+		<LinearGradient
+			colors={['#bae6fd', '#c7d2fe']} // sky-200 → indigo-300
+			start={{ x: 0, y: 0 }}
+			end={{ x: 0, y: 1 }}
+			style={styles.container}
+		>
 			<View style={styles.formWrapper}>
+				<Text style={styles.title}>Log In</Text>
 				<LogInForm onSubmit={onSubmit} />
 
 				<View style={styles.button}>
@@ -50,7 +57,7 @@ export default function LoginScreen() {
 					/>
 				</View>
 			</View>
-		</View>
+		</LinearGradient>
 	)
 }
 
@@ -85,6 +92,11 @@ const styles = StyleSheet.create({
 		paddingVertical: 16,
 		borderWidth: 2,
 		borderRadius: 16,
+	},
+	title: {
+		fontSize: 28,
+		fontWeight: '700',
+		textAlign: 'center',
 	},
 	button: {
 		alignItems: 'center',

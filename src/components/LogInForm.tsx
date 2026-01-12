@@ -29,7 +29,7 @@ const LogInForm = ({ onSubmit }: ILogInFormProps) => {
 					rules: { minLength: { value: 6, message: 'Min 6 characters' } },
 				},
 			]}
-			submitButton={{ title: 'Увійти' }}
+			submitButton={{ title: 'Log In' }}
 			defaultValues={{ email: '', password: '' }}
 			onSubmit={onSubmit}
 		/>
